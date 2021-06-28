@@ -70,15 +70,25 @@ export const fetch = async (req, res) => {
       let int_duration_gte = parseInt(duration_gte);
       query.push({ duration: { $gte: int_duration_gte } });
     }
+
     try {
       let data;
-      if (!pagenumber || !itemsperpage)
-        data = await Contest.find({ $and: query });
-      else
-        data = await Contest.find({ $and: query })
-          .skip((parseInt(pagenumber) - 1) * parseInt(itemsperpage))
-          .limit(parseInt(itemsperpage));
-      res.status(200).json({ data: data });
+      if (query === "") {
+        if (!pagenumber || !itemsperpage) data = await Contest.find();
+        else
+          data = await Contest.find()
+            .skip((parseInt(pagenumber) - 1) * parseInt(itemsperpage))
+            .limit(parseInt(itemsperpage));
+        res.status(200).json({ data: data });
+      } else {
+        if (!pagenumber || !itemsperpage)
+          data = await Contest.find({ $and: query });
+        else
+          data = await Contest.find({ $and: query })
+            .skip((parseInt(pagenumber) - 1) * parseInt(itemsperpage))
+            .limit(parseInt(itemsperpage));
+        res.status(200).json({ data: data });
+      }
     } catch (error) {
       console.log(error);
     }
