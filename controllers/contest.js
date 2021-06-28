@@ -73,7 +73,7 @@ export const fetch = async (req, res) => {
 
     try {
       let data;
-      if (query === "") {
+      if (query.length === 0) {
         if (!pagenumber || !itemsperpage) data = await Contest.find();
         else
           data = await Contest.find()
