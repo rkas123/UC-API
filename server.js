@@ -23,9 +23,9 @@ if (idToResource.size == 0) {
   intialize();
 }
 
-schedule.scheduleJob(process.env.cron1, () => {
-  isFetchPossible = "No";
-});
+// schedule.scheduleJob(process.env.cron1, () => {
+//   isFetchPossible = "No";
+// });
 schedule.scheduleJob(process.env.cron, () => {
   fetch();
 });

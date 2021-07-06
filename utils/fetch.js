@@ -2,6 +2,7 @@ import axios from "axios";
 import Contest from "../models/contest.js";
 
 const fetch = async () => {
+  console.log(fetching);
   const date = new Date().toLocaleDateString();
   const datebreak = date.split("/");
   const time = new Date().toLocaleTimeString();
