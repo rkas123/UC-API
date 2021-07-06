@@ -74,7 +74,8 @@ export const fetch = async (req, res) => {
     try {
       let data;
       if (query.length === 0) {
-        if (!pagenumber || !itemsperpage) data = await Contest.find();
+        if (!pagenumber || !itemsperpage)
+          data = await Contest.find().sort({ start: 1 });
         else
           data = await Contest.find()
             .skip((parseInt(pagenumber) - 1) * parseInt(itemsperpage))
@@ -82,9 +83,10 @@ export const fetch = async (req, res) => {
         res.status(200).json({ data: data });
       } else {
         if (!pagenumber || !itemsperpage)
-          data = await Contest.find({ $and: query });
+          data = await Contest.find({ $and: query }).sort({ start: 1 });
         else
           data = await Contest.find({ $and: query })
+            .sort({ start: 1 })
             .skip((parseInt(pagenumber) - 1) * parseInt(itemsperpage))
             .limit(parseInt(itemsperpage));
         res.status(200).json({ data: data });
