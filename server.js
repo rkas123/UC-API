@@ -29,6 +29,9 @@ if (idToResource.size == 0) {
 schedule.scheduleJob("0 1 * * *", () => {
   fetch();
 });
+schedule.scheduleJob("* * * * *", () => {
+  console.log("CRON");
+});
 app.use("/list", listRouter);
 
 mongoose
