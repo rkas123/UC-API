@@ -26,11 +26,12 @@ if (idToResource.size == 0) {
 // schedule.scheduleJob(process.env.cron1, () => {
 //   isFetchPossible = "No";
 // });
-schedule.scheduleJob("0 1 * * *", () => {
-  fetch();
-});
+// schedule.scheduleJob("0 1 * * *", () => {
+//   fetch();
+// });
 schedule.scheduleJob("* * * * *", () => {
   console.log("CRON");
+  fetch();
 });
 app.use("/list", listRouter);
 
