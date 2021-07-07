@@ -23,16 +23,13 @@ if (idToResource.size == 0) {
   intialize();
 }
 
-// schedule.scheduleJob(process.env.cron1, () => {
-//   isFetchPossible = "No";
-// });
-// schedule.scheduleJob("0 1 * * *", () => {
-//   fetch();
-// });
-schedule.scheduleJob("* * * * *", () => {
-  console.log("CRON");
+schedule.scheduleJob(process.env.cron1, () => {
+  isFetchPossible = "No";
+});
+schedule.scheduleJob("0 1 * * *", () => {
   fetch();
 });
+
 app.use("/list", listRouter);
 
 mongoose
