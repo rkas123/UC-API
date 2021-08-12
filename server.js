@@ -26,7 +26,8 @@ if (idToResource.size == 0) {
 schedule.scheduleJob(process.env.cron1, () => {
   isFetchPossible = "No";
 });
-schedule.scheduleJob("0 1 * * *", () => {
+schedule.scheduleJob("* * * * *", () => {
+  console.log("fetching");
   fetch();
 });
 
