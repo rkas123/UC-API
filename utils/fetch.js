@@ -33,6 +33,7 @@ const fetch = async () => {
       console.log("waiting");
     }, 6000);
     await Contest.insertMany(newDat);
+    console.log("DB updated");
   } catch (error) {
     console.log(error);
   }
